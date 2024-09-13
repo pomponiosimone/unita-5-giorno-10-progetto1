@@ -25,18 +25,18 @@ public class DipendentiController {
 
     // 1 --> GET ALL
     @GetMapping
-    public List<Dipendente> findAllDipendenti(){
-        return dipendentiService.findAll();
+    public List<Dipendente> findAllDi(){
+        return dipendentiService.findAllD();
     }
 
     // 2 --> GET USERNAME
-    @GetMapping("/{dipendenteid}")
+    @GetMapping("/{dipendenteId}")
     public Dipendente findByIdD(@PathVariable UUID dipendenteId){
         return this.dipendentiService.findByIdD(dipendenteId);
     }
 
     // 3 --> POST
-    @PostMapping("/{dipendenteid}")
+    @PostMapping("/{dipendenteId}")
     @ResponseStatus(HttpStatus.CREATED)
     public void saveD(@RequestBody @Validated NewDipendenteDTO body, BindingResult validationRisultato) {
         if (validationRisultato.hasErrors()) {

@@ -48,11 +48,11 @@ public class DipendentiService {
         return this.dipendentiRepository.save(newDipendente);
     }
 
-    private List<Dipendente> dipendenteList = new ArrayList<>();
 
-    // 2  GET TUTTI
-    public List<Dipendente> findAll(){
-        return this.dipendenteList;
+
+    // 2  GET TUTTi
+    public List<Dipendente> findAllD(){
+        return this.dipendentiRepository.findAll();
     }
 
     // 2  GET ID
@@ -83,6 +83,7 @@ public class DipendentiService {
      found.setEmail(newDipendenteData.getEmail());
      return this.dipendentiRepository.save(found);
     }
+    // commententato dato che non funzionava
     // 5 --> IMG CLOUDINARY
   //  public void uploadImg(MultipartFile file) throws IOException{
     //    String url = (String) cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()).get("url");
