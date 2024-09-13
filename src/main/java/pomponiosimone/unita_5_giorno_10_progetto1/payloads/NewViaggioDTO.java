@@ -14,5 +14,7 @@ public record NewViaggioDTO(
     @NotEmpty(message = "Lo stato viaggio può essere in programma o completato")
     @Size(min = 2, max = 30, message = "stato deve essere compreso tra 2 e 10 caratteri")
     String statoViaggio
-    ){}
+    ){
+
+}
 
