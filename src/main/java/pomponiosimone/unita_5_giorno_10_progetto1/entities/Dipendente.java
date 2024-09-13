@@ -28,23 +28,20 @@ public class Dipendente {
     private String nome;
     private String cognome;
     private String email;
-    private String imgProfilo;
+  //  private String imgProfilo;//
 
     //COSTRUTTORI
 
-    
 
-    public Dipendente(String cognome, String email, UUID id, String imgProfilo, String nome, String username) {
+
+    public Dipendente(String cognome, String email, String nome, String username) {
         this.cognome = cognome;
         this.email = email;
-        this.id = id;
-        this.imgProfilo = imgProfilo;
         this.nome = nome;
         this.username = username;
     }
 
-    public Dipendente(String nome, String cognome, String email, String username) {
-    }
+
     //TO STRING
 
 
@@ -55,7 +52,7 @@ public class Dipendente {
                 ", username=" + username +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
-                ", imgProfilo='" + imgProfilo + '\'' +
+                //", imgProfilo='" + imgProfilo + '\'' +//
                 '}';
     }
 }

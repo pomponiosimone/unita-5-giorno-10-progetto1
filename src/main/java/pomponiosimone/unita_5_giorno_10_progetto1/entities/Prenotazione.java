@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.UUID;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -13,33 +15,28 @@ public class Prenotazione {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private LocalDate dataRichiesta;
 
+    private LocalDate dataRichiesta;
     private String annotazione;
+
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "dipendente_id", nullable = false)
     private Dipendente dipendente;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(name = "viaggio_id", nullable = false)
     private Viaggio viaggio;
 
-
-
-
-
-
-//COSTRUTTORI
-
-    public Prenotazione(LocalDate dataRichiesta, Dipendente dipendente, Long id, String note, Viaggio viaggio) {
+    // Costruttore
+    public Prenotazione(LocalDate dataRichiesta, Dipendente dipendente, Long id, String annotazione, Viaggio viaggio) {
         this.dataRichiesta = dataRichiesta;
         this.dipendente = dipendente;
         this.id = id;
         this.annotazione = annotazione;
         this.viaggio = viaggio;
     }
-    //TO STRING
 
+    // TO STRING
     @Override
     public String toString() {
         return "Prenotazione{" +

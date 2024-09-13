@@ -25,8 +25,8 @@ public class DipendentiService {
     @Autowired
     private DipendentiRepository dipendentiRepository;
 
-    @Autowired
-    private Cloudinary cloudinary;
+ //   @Autowired
+   // private Cloudinary cloudinary;
 
 //Post
     public Dipendente saveD(NewDipendenteDTO body) {
@@ -84,9 +84,9 @@ public class DipendentiService {
      return this.dipendentiRepository.save(found);
     }
     // 5 --> IMG CLOUDINARY
-    public void uploadImg(MultipartFile file) throws IOException{
-        String url = (String) cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()).get("url");
-        System.out.println("URL: " + url);
-    }
+  //  public void uploadImg(MultipartFile file) throws IOException{
+    //    String url = (String) cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap()).get("url");
+//System.out.println("URL: " + url);
+   // }
 
 }

@@ -30,26 +30,25 @@ public class DipendentiController {
     }
 
     // 2 --> GET USERNAME
-    @GetMapping("/{dipendenteUsername}")
+    @GetMapping("/{dipendenteid}")
     public Dipendente findByIdD(@PathVariable UUID dipendenteId){
         return this.dipendentiService.findByIdD(dipendenteId);
     }
 
     // 3 --> POST
-    @PostMapping
+    @PostMapping("/{dipendenteid}")
     @ResponseStatus(HttpStatus.CREATED)
-    public NewDipendenteDTO saveD(@RequestBody @Validated NewDipendenteDTO body, BindingResult validationRisultato){
-        if (validationRisultato.hasErrors()){
+    public void saveD(@RequestBody @Validated NewDipendenteDTO body, BindingResult validationRisultato) {
+        if (validationRisultato.hasErrors()) {
             String messages = validationRisultato.getAllErrors().stream()
                     .map(objectError -> objectError.getDefaultMessage())
                     .collect(Collectors.joining(". "));
-            throw new BadRequestException((" Ci sono errori nel payload " + messages));
-        }else {
-            return new NewDipendenteDTO(this.dipendentiService.saveD(body).getId());
+            throw new BadRequestException("Ci sono errori nel payload: " + messages);
+        } else {
+            this.dipendentiService.saveD(body);
 
         }
     }
-
     // 4 --> PUT
     @PutMapping("/{dipendenteUsername}")
     public Dipendente findByIdAndUpdateD(@PathVariable UUID dipendenteId, @RequestBody Dipendente body){
@@ -63,10 +62,10 @@ public class DipendentiController {
     }
 
     // 6 --> UPLOAD
-    @PostMapping("/{dipendenteUsername}/img")
-    public void uploadImg(@RequestParam("img")MultipartFile image) throws IOException{
-        this.dipendentiService.uploadImg(image);
-    }
+ //   @PostMapping("/{dipendenteUsername}/img")
+  //  public void uploadImg(@RequestParam("img")MultipartFile image) throws IOException{
+   //     this.dipendentiService.uploadImg(image);
+   // }
 
 
 }
