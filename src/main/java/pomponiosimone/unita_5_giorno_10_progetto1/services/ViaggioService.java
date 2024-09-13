@@ -28,7 +28,7 @@ public class ViaggioService {
     }
 
     //Creazione
-    public Viaggio creaViaggio(NewViaggioDTO body) {
+    public Viaggio save(NewViaggioDTO body) {
         Viaggio newViaggio = new Viaggio(
                 LocalDate.parse(body.data()),
                 body.destinazione(),
