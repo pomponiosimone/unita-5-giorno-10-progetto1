@@ -29,7 +29,7 @@ public class ViaggioController {
     }
 
     //2 POST
-    @PostMapping("/{viaggiId}")
+    @PostMapping("/{viaggioid}")
     @ResponseStatus(HttpStatus.CREATED)
     public NewRespViaggioDTO save(@RequestBody @Validated NewViaggioDTO body, BindingResult validationResult) {
         if (validationResult.hasErrors()) {
@@ -52,14 +52,14 @@ public class ViaggioController {
     }
 
     //PUT
-    @PutMapping("/{viaggioId}")
+    @PutMapping("/{viaggioid}")
     public Viaggio findByIdAndUpdate(@PathVariable UUID viaggioid, @RequestBody Viaggio body) {
         return this.viaggioService.findByIdAndUpdate(viaggioid,body);
 
     }
 
     //Delete
-    @DeleteMapping
+    @DeleteMapping("/{viaggioid}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void findByIdAndDelete (@PathVariable UUID viaggioId) {
         this.viaggioService.findByIdAndDelete(viaggioId);

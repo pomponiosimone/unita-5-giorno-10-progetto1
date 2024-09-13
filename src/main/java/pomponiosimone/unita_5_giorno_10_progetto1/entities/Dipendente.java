@@ -11,15 +11,19 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "dipendenti")
 @Getter
 @Setter
 @NoArgsConstructor
 public class Dipendente {
+
     @Id
     @GeneratedValue
     @Setter(AccessLevel.NONE)
+    private UUID id;
     private String username;
     private String nome;
     private String cognome;
@@ -27,22 +31,31 @@ public class Dipendente {
     private String imgProfilo;
 
     //COSTRUTTORI
-    public Dipendente(String nome, String cognome, String username, String email) {
-        this.nome = nome;
+
+    
+
+    public Dipendente(String cognome, String email, UUID id, String imgProfilo, String nome, String username) {
         this.cognome = cognome;
-        this.username = username;
         this.email = email;
+        this.id = id;
+        this.imgProfilo = imgProfilo;
+        this.nome = nome;
+        this.username = username;
     }
 
+    public Dipendente(String nome, String cognome, String email, String username) {
+    }
     //TO STRING
+
 
     @Override
     public String toString() {
         return "Dipendente{" +
+                "cognome='" + cognome + '\'' +
+                ", username=" + username +
                 ", nome='" + nome + '\'' +
-                ", cognome='" + cognome + '\'' +
-                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
+                ", imgProfilo='" + imgProfilo + '\'' +
                 '}';
     }
 }
