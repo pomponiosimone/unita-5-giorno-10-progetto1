@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import pomponiosimone.unita_5_giorno_10_progetto1.enums.StatoViaggio;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -17,18 +18,22 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 public class Viaggio {
+
     @Id
     @GeneratedValue
     @Setter(AccessLevel.NONE)
     private UUID id;
-    private String destinazione;
-    private Date data;
 
-    @Enumerated
+    private String destinazione;
+    private LocalDate data;
+
+    @Enumerated(EnumType.STRING)
     private StatoViaggio statoViaggio;
 
-    //COSTRUTTORI
-    public Viaggio(StatoViaggio statoViaggio) {
+    // Costruttori
+    public Viaggio(LocalDate data, String destinazione, StatoViaggio statoViaggio) {
+        this.data = data;
+        this.destinazione = destinazione;
         this.statoViaggio = statoViaggio;
     }
 
